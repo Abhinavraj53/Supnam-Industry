@@ -6,7 +6,7 @@ export function ProductCard({ product }: { product: Product }) {
   const image = product.images?.[0] || 'https://images.pexels.com/photos/37116937/pexels-photo-37116937.jpeg?auto=compress&cs=tinysrgb&w=800';
 
   return (
-    <div className="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-brand hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-300 flex flex-col">
+    <div className="group min-w-0 bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-brand hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-300 flex flex-col">
       <Link href={`/products/${product.slug}`} className="relative aspect-square overflow-hidden bg-orange-50 block">
         <img
           src={image}
@@ -22,7 +22,7 @@ export function ProductCard({ product }: { product: Product }) {
           <span className="w-1.5 h-1.5 bg-green-500 rounded-full" /> In Stock
         </span>
       </Link>
-      <div className="p-4 flex flex-col flex-1">
+      <div className="p-4 flex flex-col flex-1 min-w-0">
         {product.categories?.name && (
           <p className="text-[11px] font-semibold text-brand uppercase tracking-wider mb-1">
             {product.categories.name}
@@ -39,7 +39,7 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="mt-1.5 flex items-center gap-1.5 text-xs text-gray-500">
           <Package2 className="w-3.5 h-3.5" /> MOQ: <span className="font-semibold text-gray-700">{product.min_order}</span>
         </div>
-        <div className="mt-auto pt-4 grid grid-cols-2 gap-2">
+        <div className="mt-auto pt-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
           <Link
             href={`/products/${product.slug}`}
             className="text-center text-xs font-semibold px-3 py-2 border border-gray-300 rounded-md text-gray-700 hover:border-brand hover:text-brand transition-colors"

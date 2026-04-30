@@ -24,7 +24,7 @@ export default async function CategoryDetail({ params }: { params: { slug: strin
       <SiteHeader logoUrl={settings?.theme?.logoUrl} company={company} />
 
       <section className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white border-b-4 border-brand">
-        <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="page-shell py-8 md:py-10">
           <nav className="flex items-center gap-1.5 text-xs text-gray-400 mb-4">
             <Link href="/" className="hover:text-brand">Home</Link>
             <ChevronRight className="w-3 h-3" />
@@ -41,16 +41,16 @@ export default async function CategoryDetail({ params }: { params: { slug: strin
               <h1 className="text-2xl md:text-3xl font-bold">{category.name}</h1>
               <p className="text-gray-300 mt-1 max-w-2xl text-sm">{category.description || `Explore our complete range of ${category.name.toLowerCase()}.`}</p>
             </div>
-            <Link href="/contact" className="inline-flex items-center gap-2 bg-brand hover:bg-orange-600 text-white px-5 py-2.5 rounded-md font-semibold shadow">
+            <Link href="/contact" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-brand hover:bg-orange-600 text-white px-5 py-2.5 rounded-md font-semibold shadow">
               Get Bulk Quote <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="py-8">
-        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-[240px_1fr] gap-6">
-          <aside className="bg-white border border-gray-200 rounded-lg shadow-sm h-fit">
+      <section className="py-8 md:py-10">
+        <div className="page-shell grid gap-6 xl:grid-cols-[260px_1fr]">
+          <aside className="bg-white border border-gray-200 rounded-lg shadow-sm h-fit xl:sticky xl:top-32">
             <div className="p-4 border-b border-gray-100 bg-orange-50 rounded-t-lg">
               <h3 className="font-bold text-gray-900 text-sm uppercase tracking-wider">All Categories</h3>
             </div>
@@ -72,7 +72,7 @@ export default async function CategoryDetail({ params }: { params: { slug: strin
           </aside>
 
           <div>
-            <div className="flex items-center justify-between mb-4 bg-white border border-gray-200 rounded-lg px-4 py-3">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between mb-4 bg-white border border-gray-200 rounded-lg px-4 py-3">
               <p className="text-sm text-gray-600">
                 <span className="font-bold text-gray-900">{products.length}</span> products in {category.name}
               </p>
@@ -81,13 +81,13 @@ export default async function CategoryDetail({ params }: { params: { slug: strin
               </Link>
             </div>
             {products.length === 0 ? (
-              <div className="bg-white border border-dashed border-orange-300 rounded-lg p-16 text-center">
+              <div className="bg-white border border-dashed border-orange-300 rounded-lg px-6 py-12 sm:p-16 text-center">
                 <Package className="w-12 h-12 text-brand/60 mx-auto mb-3" />
                 <p className="text-gray-600">No products available in this category yet.</p>
                 <Link href="/contact" className="mt-4 inline-block text-sm text-brand font-semibold hover:underline">Contact us for inquiries</Link>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 min-[420px]:grid-cols-2 xl:grid-cols-3 gap-4">
                 {products.map((p) => (
                   <ProductCard key={p.id} product={p} />
                 ))}

@@ -25,7 +25,7 @@ export default async function ContactPage() {
       <SiteHeader logoUrl={settings?.theme?.logoUrl} company={company} />
 
       <section className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white border-b-4 border-brand">
-        <div className="max-w-7xl mx-auto px-4 py-10">
+        <div className="page-shell py-10">
           <nav className="flex items-center gap-1.5 text-xs text-gray-400 mb-3">
             <Link href="/" className="hover:text-brand">Home</Link>
             <ChevronRight className="w-3 h-3" />
@@ -38,14 +38,14 @@ export default async function ContactPage() {
       </section>
 
       <section className="py-8 bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="page-shell grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-4 gap-4">
           {info.map((i) => (
             <a key={i.title} href={i.link} className="group bg-gray-50 hover:bg-white hover:shadow-lg border border-gray-200 hover:border-brand rounded-lg p-5 transition-all">
               <div className="w-11 h-11 rounded-lg gradient-brand flex items-center justify-center mb-3">
                 <i.icon className="w-5 h-5 text-white" />
               </div>
               <div className="text-[11px] font-bold text-brand uppercase tracking-wider mb-1">{i.title}</div>
-              <div className="font-bold text-gray-900 text-sm group-hover:text-brand transition-colors line-clamp-2">{i.value}</div>
+              <div className="font-bold text-gray-900 text-sm group-hover:text-brand transition-colors line-clamp-2 break-words">{i.value}</div>
               <div className="text-xs text-gray-500 mt-0.5">{i.sub}</div>
             </a>
           ))}
@@ -53,7 +53,7 @@ export default async function ContactPage() {
       </section>
 
       <section className="py-12">
-        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-[1fr_1.3fr] gap-8">
+        <div className="page-shell grid gap-8 lg:grid-cols-[1fr_1.3fr]">
           <div className="space-y-5">
             <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
               <div className="flex items-center gap-2 mb-4 pb-4 border-b border-gray-100">
@@ -61,25 +61,25 @@ export default async function ContactPage() {
                 <h3 className="font-bold text-gray-900 uppercase tracking-wider text-sm">Company Info</h3>
               </div>
               <dl className="space-y-3 text-sm">
-                <div className="flex justify-between gap-4 pb-2 border-b border-gray-100">
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4 pb-2 border-b border-gray-100">
                   <dt className="text-gray-500">Business Name</dt>
-                  <dd className="font-semibold text-gray-900 text-right">{company.name}</dd>
+                  <dd className="font-semibold text-gray-900 sm:text-right break-words">{company.name}</dd>
                 </div>
-                <div className="flex justify-between gap-4 pb-2 border-b border-gray-100">
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4 pb-2 border-b border-gray-100">
                   <dt className="text-gray-500">Registration No.</dt>
-                  <dd className="font-semibold text-gray-900 text-right">{company.registrationNo}</dd>
+                  <dd className="font-semibold text-gray-900 sm:text-right break-all">{company.registrationNo}</dd>
                 </div>
-                <div className="flex justify-between gap-4 pb-2 border-b border-gray-100">
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4 pb-2 border-b border-gray-100">
                   <dt className="text-gray-500">PAN</dt>
-                  <dd className="font-semibold text-gray-900 text-right">{company.panNo}</dd>
+                  <dd className="font-semibold text-gray-900 sm:text-right">{company.panNo}</dd>
                 </div>
-                <div className="flex justify-between gap-4 pb-2 border-b border-gray-100">
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4 pb-2 border-b border-gray-100">
                   <dt className="text-gray-500">Turnover</dt>
-                  <dd className="font-semibold text-gray-900 text-right">{company.turnover}</dd>
+                  <dd className="font-semibold text-gray-900 sm:text-right">{company.turnover}</dd>
                 </div>
-                <div className="flex justify-between gap-4">
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
                   <dt className="text-gray-500">Nature</dt>
-                  <dd className="font-semibold text-gray-900 text-right">{company.natureOfBusiness}</dd>
+                  <dd className="font-semibold text-gray-900 sm:text-right break-words">{company.natureOfBusiness}</dd>
                 </div>
               </dl>
             </div>
@@ -90,7 +90,7 @@ export default async function ContactPage() {
               <p className="text-sm text-orange-50 leading-relaxed mb-4">
                 GST, TrustSEAL and MSME registered. Trusted by temples, wholesalers and retailers across India.
               </p>
-              <div className="grid grid-cols-2 gap-2 text-xs">
+              <div className="grid grid-cols-1 min-[420px]:grid-cols-2 gap-2 text-xs">
                 <div className="bg-white/10 rounded-md p-2 text-center">
                   <div className="font-bold">{responseShort}</div>
                   <div className="text-[10px] text-orange-100">Response Rate</div>
@@ -107,7 +107,7 @@ export default async function ContactPage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 md:p-8">
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6 md:p-8">
             <div className="flex items-center gap-3 mb-5 pb-5 border-b border-gray-100">
               <div className="w-11 h-11 rounded-lg gradient-brand flex items-center justify-center">
                 <MessageSquare className="w-5 h-5 text-white" />

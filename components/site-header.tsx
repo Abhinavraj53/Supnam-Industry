@@ -33,73 +33,94 @@ export function SiteHeader({ logoUrl, company }: { logoUrl?: string; company?: C
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
       <div className="bg-gray-900 text-gray-200 text-xs">
-        <div className="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5">
-              <Phone className="w-3.5 h-3.5 text-brand" /> {c.phone}
-            </span>
-            <span className="hidden sm:flex items-center gap-1.5">
-              <Mail className="w-3.5 h-3.5 text-brand" /> {c.email}
-            </span>
-          </div>
-          <div className="hidden md:flex items-center gap-4 text-[11px]">
-            <span className="flex items-center gap-1.5"><BadgeCheck className="w-3.5 h-3.5 text-brand" /> GST Registered</span>
-            <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-brand" /> TrustSEAL Verified</span>
-            <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-brand" /> {c.responseRate.split(' ')[0]} Response Rate</span>
+        <div className="page-shell py-2">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+              <span className="flex items-center gap-1.5 break-all sm:break-normal">
+                <Phone className="w-3.5 h-3.5 text-brand shrink-0" /> {c.phone}
+              </span>
+              <span className="flex items-center gap-1.5 break-all lg:hidden">
+                <Mail className="w-3.5 h-3.5 text-brand shrink-0" /> {c.email}
+              </span>
+              <span className="hidden items-center gap-1.5 lg:flex">
+                <Mail className="w-3.5 h-3.5 text-brand shrink-0" /> {c.email}
+              </span>
+            </div>
+            <div className="hidden flex-wrap items-center gap-3 text-[11px] lg:flex">
+              <span className="flex items-center gap-1.5"><BadgeCheck className="w-3.5 h-3.5 text-brand" /> GST Registered</span>
+              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-brand" /> TrustSEAL Verified</span>
+              <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-brand" /> {c.responseRate.split(' ')[0]} Response Rate</span>
+            </div>
           </div>
         </div>
       </div>
 
       <div className="border-b border-orange-100">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center gap-6">
-          <Link href="/" className="flex items-center gap-3 group shrink-0">
-            {logoUrl ? (
-              <img src={logoUrl} alt={c.name} className="h-12 w-12 object-contain" />
-            ) : (
-              <div className="w-12 h-12 rounded-xl gradient-brand flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
-                <Flame className="w-7 h-7 text-white" />
+        <div className="page-shell py-3 sm:py-4">
+          <div className="flex items-center gap-3 sm:gap-4 xl:gap-6">
+            <Link href="/" className="flex min-w-0 items-center gap-3 group shrink">
+              {logoUrl ? (
+                <img src={logoUrl} alt={c.name} className="h-10 w-10 shrink-0 object-contain sm:h-12 sm:w-12" />
+              ) : (
+                <div className="w-10 h-10 shrink-0 rounded-xl gradient-brand flex items-center justify-center shadow-md group-hover:scale-105 transition-transform sm:w-12 sm:h-12">
+                  <Flame className="w-6 h-6 text-white sm:w-7 sm:h-7" />
+                </div>
+              )}
+              <div className="min-w-0">
+                <div className="truncate text-base font-bold leading-tight text-gray-900 sm:text-lg lg:text-xl">{c.name}</div>
+                <div className="truncate text-[9px] font-semibold tracking-[0.25em] text-brand sm:text-[10px]">{c.tagline}</div>
               </div>
-            )}
-            <div>
-              <div className="text-lg md:text-xl font-bold text-gray-900 leading-tight">{c.name}</div>
-              <div className="text-[10px] text-brand font-semibold tracking-widest">{c.tagline}</div>
-            </div>
-          </Link>
+            </Link>
 
-          <form action="/categories" className="hidden md:flex flex-1 max-w-xl ml-4">
-            <div className="flex w-full rounded-lg border-2 border-orange-200 focus-within:border-brand overflow-hidden bg-white">
+            <form action="/categories" className="hidden min-w-0 flex-1 xl:flex xl:max-w-xl xl:ml-2">
+              <div className="flex w-full overflow-hidden rounded-lg border-2 border-orange-200 bg-white focus-within:border-brand">
+                <input
+                  name="q"
+                  type="text"
+                  placeholder="Search Products (e.g. Agarbatti, Dhoop, Kapoor)..."
+                  className="flex-1 px-4 py-2.5 text-sm outline-none bg-transparent text-gray-800 min-w-0"
+                />
+                <button type="submit" className="bg-brand hover:bg-orange-600 text-white px-4 lg:px-5 font-semibold text-sm flex items-center gap-2 transition-colors shrink-0">
+                  <Search className="w-4 h-4" /> <span className="hidden 2xl:inline">Search</span>
+                </button>
+              </div>
+            </form>
+
+            <div className="ml-auto flex items-center gap-2 sm:gap-3">
+              <Link
+                href="/contact"
+                className="hidden sm:inline-flex items-center gap-2 bg-brand hover:bg-orange-600 text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-all shadow-sm hover:shadow-md"
+              >
+                <MessageSquare className="w-4 h-4" /> <span className="hidden md:inline">Get Quote</span>
+              </Link>
+              <button
+                onClick={() => setOpen(!open)}
+                className="xl:hidden p-2 rounded-lg hover:bg-orange-50 shrink-0"
+                aria-label="Menu"
+              >
+                {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
+          </div>
+
+          <form action="/categories" className="mt-3 xl:hidden">
+            <div className="flex overflow-hidden rounded-lg border-2 border-orange-200 bg-white focus-within:border-brand">
               <input
                 name="q"
                 type="text"
-                placeholder="Search Products (e.g. Agarbatti, Dhoop, Kapoor)..."
-                className="flex-1 px-4 py-2.5 text-sm outline-none bg-transparent text-gray-800"
+                placeholder="Search products..."
+                className="min-w-0 flex-1 px-4 py-2.5 text-sm outline-none bg-transparent text-gray-800"
               />
-              <button type="submit" className="bg-brand hover:bg-orange-600 text-white px-5 font-semibold text-sm flex items-center gap-2 transition-colors">
-                <Search className="w-4 h-4" /> <span className="hidden lg:inline">Search</span>
+              <button type="submit" className="bg-brand hover:bg-orange-600 text-white px-4 font-semibold text-sm flex items-center gap-2 transition-colors shrink-0">
+                <Search className="w-4 h-4" />
               </button>
             </div>
           </form>
-
-          <div className="ml-auto flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="hidden md:inline-flex items-center gap-2 bg-brand hover:bg-orange-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all shadow-sm hover:shadow-md"
-            >
-              <MessageSquare className="w-4 h-4" /> Get Quote
-            </Link>
-            <button
-              onClick={() => setOpen(!open)}
-              className="lg:hidden p-2 rounded-lg hover:bg-orange-50"
-              aria-label="Menu"
-            >
-              {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
         </div>
       </div>
 
-      <div className="hidden lg:block bg-white border-b border-orange-100">
-        <div className="max-w-7xl mx-auto px-4 flex items-center gap-1">
+      <div className="hidden xl:block bg-white border-b border-orange-100">
+        <div className="page-shell flex items-center gap-1">
           <Link href="/" className="px-4 py-3 text-sm font-semibold text-gray-700 hover:text-brand border-b-2 border-transparent hover:border-brand transition-colors">
             Home
           </Link>
@@ -152,14 +173,8 @@ export function SiteHeader({ logoUrl, company }: { logoUrl?: string; company?: C
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-orange-100 bg-white max-h-[80vh] overflow-y-auto">
-          <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
-            <form action="/categories" className="mb-3">
-              <div className="flex rounded-lg border-2 border-orange-200 overflow-hidden">
-                <input name="q" type="text" placeholder="Search products..." className="flex-1 px-3 py-2 text-sm outline-none" />
-                <button className="bg-brand text-white px-4"><Search className="w-4 h-4" /></button>
-              </div>
-            </form>
+        <div className="xl:hidden border-t border-orange-100 bg-white max-h-[80vh] overflow-y-auto">
+          <nav className="page-shell py-4 flex flex-col gap-1">
             <Link href="/" onClick={() => setOpen(false)} className="px-3 py-2.5 rounded-lg text-gray-700 hover:bg-orange-50 hover:text-brand font-medium">Home</Link>
             <Link href="/about" onClick={() => setOpen(false)} className="px-3 py-2.5 rounded-lg text-gray-700 hover:bg-orange-50 hover:text-brand font-medium">About Us</Link>
             <button

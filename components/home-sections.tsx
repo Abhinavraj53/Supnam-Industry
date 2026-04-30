@@ -19,8 +19,8 @@ export function HomeCategories() {
   }, []);
 
   return (
-    <section className="py-10 lg:py-14 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="section-space bg-gray-50">
+      <div className="page-shell">
         <div className="flex items-end justify-between mb-8 flex-wrap gap-4 border-b-2 border-brand pb-4">
           <div>
             <p className="text-xs font-bold text-brand uppercase tracking-widest mb-1">Browse By Category</p>
@@ -31,7 +31,7 @@ export function HomeCategories() {
           </Link>
         </div>
         {loading ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
             {Array.from({ length: 6 }).map((_, i) => (
               <div key={i} className="bg-white rounded-lg border border-gray-200 p-3 animate-pulse">
                 <div className="aspect-square bg-orange-50 rounded-md mb-2" />
@@ -42,12 +42,12 @@ export function HomeCategories() {
         ) : categories.length === 0 ? (
           <p className="text-center text-gray-500 py-8">No categories available yet.</p>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
             {categories.map((cat) => (
               <Link
                 key={cat.id}
                 href={`/categories/${cat.slug}`}
-                className="group bg-white rounded-lg border border-gray-200 hover:border-brand hover:shadow-md transition-all p-3 text-center"
+                className="group bg-white rounded-lg border border-gray-200 hover:border-brand hover:shadow-md transition-all p-3 text-center min-w-0"
               >
                 <div className="relative w-full aspect-square mb-2 rounded-md overflow-hidden bg-orange-50">
                   {cat.image_url && (
@@ -84,8 +84,8 @@ export function HomeFeaturedProducts() {
   }, []);
 
   return (
-    <section className="py-10 lg:py-14 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="section-space bg-white">
+      <div className="page-shell">
         <div className="flex items-end justify-between mb-8 flex-wrap gap-4 border-b-2 border-brand pb-4">
           <div>
             <p className="text-xs font-bold text-brand uppercase tracking-widest mb-1">Featured Products</p>
@@ -96,7 +96,7 @@ export function HomeFeaturedProducts() {
           </Link>
         </div>
         {loading ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {Array.from({ length: 4 }).map((_, i) => (
               <div key={i} className="bg-white rounded-xl border border-gray-200 overflow-hidden animate-pulse">
                 <div className="aspect-square bg-orange-50" />
@@ -116,7 +116,7 @@ export function HomeFeaturedProducts() {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {products.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}

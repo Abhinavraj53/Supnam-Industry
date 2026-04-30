@@ -38,7 +38,7 @@ export default async function AboutPage() {
       <SiteHeader logoUrl={settings?.theme?.logoUrl} company={company} />
 
       <section className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white border-b-4 border-brand">
-        <div className="max-w-7xl mx-auto px-4 py-10">
+        <div className="page-shell py-10">
           <nav className="flex items-center gap-1.5 text-xs text-gray-400 mb-3">
             <Link href="/" className="hover:text-brand">Home</Link>
             <ChevronRight className="w-3 h-3" />
@@ -51,7 +51,7 @@ export default async function AboutPage() {
       </section>
 
       <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
+        <div className="page-shell grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-12 items-center">
           <div>
             <div className="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 text-brand px-3 py-1 rounded-sm text-xs font-bold uppercase tracking-wider mb-4">
               <Building2 className="w-3.5 h-3.5" /> Our Company
@@ -66,11 +66,11 @@ export default async function AboutPage() {
             <p className="text-gray-700 leading-relaxed mb-6">
               Every product we offer is carefully selected for authenticity and spiritual significance. Our commitment to quality has earned us the trust of thousands of devotees and businesses across India.
             </p>
-            <div className="flex flex-wrap gap-3">
-              <Link href="/categories" className="inline-flex items-center gap-2 bg-brand hover:bg-orange-600 text-white px-6 py-3 rounded-md font-semibold transition-all">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link href="/categories" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-brand hover:bg-orange-600 text-white px-6 py-3 rounded-md font-semibold transition-all">
                 View Our Products
               </Link>
-              <Link href="/contact" className="inline-flex items-center gap-2 bg-white border-2 border-gray-900 hover:bg-gray-900 hover:text-white text-gray-900 px-6 py-3 rounded-md font-semibold transition-all">
+              <Link href="/contact" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-white border-2 border-gray-900 hover:bg-gray-900 hover:text-white text-gray-900 px-6 py-3 rounded-md font-semibold transition-all">
                 Contact Us
               </Link>
             </div>
@@ -80,10 +80,10 @@ export default async function AboutPage() {
               <img
                 src="https://images.pexels.com/photos/37116936/pexels-photo-37116936.jpeg?auto=compress&cs=tinysrgb&w=1200"
                 alt="Pujan Products"
-                className="w-full h-[460px] object-cover"
+                className="w-full h-[280px] sm:h-[360px] lg:h-[460px] object-cover"
               />
             </div>
-            <div className="absolute -bottom-5 -left-5 bg-white border border-orange-100 rounded-xl shadow-lg p-4 grid grid-cols-2 gap-4">
+            <div className="mt-4 grid grid-cols-2 gap-4 bg-white border border-orange-100 rounded-xl shadow-lg p-4 sm:max-w-sm md:absolute md:-bottom-5 md:-left-5">
               <div className="text-center pr-4 border-r border-gray-200">
                 <div className="text-2xl font-bold text-brand">{company.devoteesServed}</div>
                 <div className="text-[10px] uppercase tracking-wider text-gray-500">Devotees Served</div>
@@ -98,21 +98,21 @@ export default async function AboutPage() {
       </section>
 
       <section className="py-12 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="page-shell">
           <div className="border-b-2 border-brand pb-4 mb-8">
             <p className="text-xs font-bold text-brand uppercase tracking-widest mb-1">Company Profile</p>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Factsheet</h2>
           </div>
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-gray-100 [&>*:nth-child(n+4)]:border-t">
-              {factSheet.map((f, idx) => (
-                <div key={f.label} className={`p-5 flex items-start gap-3 ${idx >= 3 ? 'lg:border-t' : ''}`}>
+          <div className="bg-gray-100 rounded-xl shadow-sm border border-gray-200 overflow-hidden p-px">
+            <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3">
+              {factSheet.map((f) => (
+                <div key={f.label} className="bg-white p-5 flex items-start gap-3">
                   <div className="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center flex-shrink-0">
                     <f.icon className="w-5 h-5 text-brand" />
                   </div>
                   <div>
                     <div className="text-[11px] text-gray-500 font-semibold uppercase tracking-wider">{f.label}</div>
-                    <div className="text-gray-900 font-bold mt-1 text-sm">{f.value}</div>
+                    <div className="text-gray-900 font-bold mt-1 text-sm break-words">{f.value}</div>
                   </div>
                 </div>
               ))}
@@ -122,12 +122,12 @@ export default async function AboutPage() {
       </section>
 
       <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="page-shell">
           <div className="border-b-2 border-brand pb-4 mb-8">
             <p className="text-xs font-bold text-brand uppercase tracking-widest mb-1">Our Values</p>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">What Drives Us</h2>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-4 gap-4">
             {values.map((v) => (
               <div key={v.title} className="bg-gray-50 hover:bg-white border border-gray-200 hover:border-brand hover:shadow-lg rounded-lg p-5 text-center transition-all">
                 <div className="w-12 h-12 mx-auto rounded-lg gradient-brand flex items-center justify-center mb-3">
@@ -142,23 +142,23 @@ export default async function AboutPage() {
       </section>
 
       <section className="py-12 bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-6 text-center">
-          <div className="p-6 border-r border-gray-800 last:border-0">
+        <div className="page-shell grid gap-4 sm:grid-cols-2 xl:grid-cols-4 text-center">
+          <div className="p-6 rounded-xl border border-gray-800 bg-white/[0.02]">
             <ShieldCheck className="w-10 h-10 text-brand mx-auto mb-3" />
             <div className="text-3xl font-bold mb-1">100%</div>
             <div className="text-xs text-gray-400 uppercase tracking-wider">Authentic Products</div>
           </div>
-          <div className="p-6 md:border-r border-gray-800">
+          <div className="p-6 rounded-xl border border-gray-800 bg-white/[0.02]">
             <Award className="w-10 h-10 text-brand mx-auto mb-3" />
             <div className="text-3xl font-bold mb-1">{company.productVarieties}</div>
             <div className="text-xs text-gray-400 uppercase tracking-wider">Product Varieties</div>
           </div>
-          <div className="p-6 md:border-r border-gray-800">
+          <div className="p-6 rounded-xl border border-gray-800 bg-white/[0.02]">
             <Users className="w-10 h-10 text-brand mx-auto mb-3" />
             <div className="text-3xl font-bold mb-1">{company.devoteesServed}</div>
             <div className="text-xs text-gray-400 uppercase tracking-wider">Happy Customers</div>
           </div>
-          <div className="p-6">
+          <div className="p-6 rounded-xl border border-gray-800 bg-white/[0.02]">
             <Calendar className="w-10 h-10 text-brand mx-auto mb-3" />
             <div className="text-3xl font-bold mb-1">{company.yearsExperience}</div>
             <div className="text-xs text-gray-400 uppercase tracking-wider">Years Experience</div>

@@ -20,35 +20,35 @@ export function SiteFooter({ company }: { company?: Company }) {
   return (
     <footer className="bg-gray-900 text-gray-300 mt-10">
       <div className="bg-gray-800 border-b border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 py-5 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-          <div className="flex items-center justify-center gap-2 text-xs">
+        <div className="page-shell py-5 grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-4 gap-3 text-center">
+          <div className="flex items-center justify-center gap-2 rounded-lg border border-gray-700/70 px-3 py-3 text-xs">
             <BadgeCheck className="w-5 h-5 text-brand" />
             <span><span className="text-white font-bold">GST</span> Registered</span>
           </div>
-          <div className="flex items-center justify-center gap-2 text-xs">
+          <div className="flex items-center justify-center gap-2 rounded-lg border border-gray-700/70 px-3 py-3 text-xs">
             <ShieldCheck className="w-5 h-5 text-brand" />
             <span><span className="text-white font-bold">TrustSEAL</span> Verified</span>
           </div>
-          <div className="flex items-center justify-center gap-2 text-xs">
+          <div className="flex items-center justify-center gap-2 rounded-lg border border-gray-700/70 px-3 py-3 text-xs">
             <Clock className="w-5 h-5 text-brand" />
             <span><span className="text-white font-bold">{c.responseRate.split(' ')[0]}</span> Response Rate</span>
           </div>
-          <div className="flex items-center justify-center gap-2 text-xs">
+          <div className="flex items-center justify-center gap-2 rounded-lg border border-gray-700/70 px-3 py-3 text-xs">
             <Building2 className="w-5 h-5 text-brand" />
             <span><span className="text-white font-bold">{c.turnover}</span> Turnover</span>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="page-shell py-10 md:py-12 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
         <div>
           <div className="flex items-center gap-3 mb-4">
             <div className="w-11 h-11 rounded-lg gradient-brand flex items-center justify-center">
               <Flame className="w-6 h-6 text-white" />
             </div>
             <div>
-              <div className="text-white font-bold">{c.name}</div>
-              <div className="text-[10px] text-brand font-semibold tracking-widest">{c.tagline}</div>
+              <div className="text-white font-bold break-words">{c.name}</div>
+              <div className="text-[10px] text-brand font-semibold tracking-widest break-words">{c.tagline}</div>
             </div>
           </div>
           <p className="text-sm leading-relaxed text-gray-400 mb-5">
@@ -67,7 +67,7 @@ export function SiteFooter({ company }: { company?: Company }) {
 
         <div>
           <h3 className="text-white font-semibold mb-4 uppercase tracking-wider text-sm border-b border-gray-800 pb-2">Our Products</h3>
-          <ul className="grid grid-cols-1 gap-2 text-sm">
+          <ul className="grid grid-cols-1 gap-2 text-sm sm:grid-cols-2 xl:grid-cols-1">
             {categoryLinks.map((cat) => (
               <li key={cat}>
                 <Link href="/categories" className="hover:text-brand transition-colors flex items-center gap-1.5">
@@ -95,20 +95,20 @@ export function SiteFooter({ company }: { company?: Company }) {
           <ul className="space-y-3 text-sm">
             <li className="flex items-start gap-3">
               <MapPin className="w-4 h-4 mt-0.5 text-brand flex-shrink-0" />
-              <span className="text-gray-400">{c.address}</span>
+              <span className="text-gray-400 break-words">{c.address}</span>
             </li>
             <li className="flex items-start gap-3">
               <Phone className="w-4 h-4 mt-0.5 text-brand flex-shrink-0" />
-              <a href={`tel:${c.phone.replace(/\s/g, '')}`} className="text-gray-400 hover:text-brand">{c.phone}</a>
+              <a href={`tel:${c.phone.replace(/\s/g, '')}`} className="text-gray-400 hover:text-brand break-all">{c.phone}</a>
             </li>
             <li className="flex items-start gap-3">
               <Mail className="w-4 h-4 mt-0.5 text-brand flex-shrink-0" />
-              <a href={`mailto:${c.email}`} className="text-gray-400 hover:text-brand">{c.email}</a>
+              <a href={`mailto:${c.email}`} className="text-gray-400 hover:text-brand break-all">{c.email}</a>
             </li>
           </ul>
           <div className="mt-5 bg-gray-800 rounded-md p-3 text-xs">
             <div className="text-gray-400 mb-1">Registration No.</div>
-            <div className="text-white font-semibold">{c.registrationNo}</div>
+            <div className="text-white font-semibold break-all">{c.registrationNo}</div>
             <div className="text-gray-400 mt-2 mb-1">PAN</div>
             <div className="text-white font-semibold">{c.panNo}</div>
           </div>
@@ -116,7 +116,7 @@ export function SiteFooter({ company }: { company?: Company }) {
       </div>
 
       <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
+        <div className="page-shell py-5 flex flex-col items-center justify-between gap-2 text-center text-xs text-gray-500 sm:flex-row sm:text-left">
           <p>&copy; {new Date().getFullYear()} {c.name}. All rights reserved.</p>
           <p>Made with devotion for devotees across India</p>
         </div>
